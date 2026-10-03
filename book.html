@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerald &amp; Jeffrey: The Ocean's Unlikely Pair</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sea: #083246;
+      --sea-deep: #041e2b;
+      --foam: #e7f6fb;
+      --paper: #fff8ee;
+      --ink: #1b3a48;
+      --coral: #e07a3d;
+      --gold: #f2c14e;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Nunito", "Segoe UI", sans-serif;
+      color: var(--foam);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 80% 0%, rgba(120, 200, 220, 0.2), transparent 32%),
+        linear-gradient(180deg, #12708a 0%, var(--sea) 42%, var(--sea-deep) 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 24px 16px 32px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.45) 0 2px, transparent 3px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.25) 0 3px, transparent 4px);
+      background-size: 140px 180px, 220px 260px;
+      background-position: 20px 40px, 80px 120px;
+      opacity: 0.35;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      letter-spacing: 0.01em;
+      text-align: center;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .stage {
+      position: relative;
+      width: min(560px, 92vw);
+      height: min(760px, 78vh);
+      filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.35));
+    }
+
+    .book {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      perspective: 2200px;
+    }
+
+    .sheet {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px 22px 22px 18px;
+      background: transparent;
+      color: var(--ink);
+      overflow: hidden;
+      transform-origin: left center;
+      backface-visibility: hidden;
+      transition: transform 0.85s cubic-bezier(0.4, 0.05, 0.2, 1);
+      box-shadow:
+        inset -14px 0 18px rgba(80, 50, 20, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.4);
+    }
+
+    .sheet.flipped {
+      transform: rotateY(-178deg);
+    }
+
+    .sheet .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(90deg, rgba(120, 80, 40, 0.05), transparent 18px),
+        var(--paper);
+    }
+
+    .cover-face {
+      background: #08384a;
+    }
+
+    .cover-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .art {
+      flex: 1.15;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 18px 8px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.55), transparent 46%),
+        linear-gradient(180deg, #8fd4ea 0%, #3aa0c4 100%);
+    }
+
+    .art img {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 18px rgba(8, 50, 70, 0.18);
+    }
+
+    .art.crowd img { max-width: 24%; height: auto; max-height: 78%; }
+    .art.pair img { max-width: 46%; }
+    .art.trio img { max-width: 31%; }
+
+    .words {
+      flex: 0.85;
+      padding: 18px 28px 36px;
+      overflow: auto;
+    }
+
+    .words p {
+      margin: 0 0 0.8em;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.02rem, 2.1vh, 1.28rem);
+      line-height: 1.45;
+    }
+
+    .words p:last-child { margin-bottom: 0; }
+
+    .said {
+      font-weight: 700;
+    }
+
+    .ending {
+      text-align: center;
+      font-size: clamp(1.35rem, 2.6vh, 1.7rem);
+      color: #c45b24;
+    }
+
+    .num {
+      position: absolute;
+      right: 18px;
+      bottom: 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #8aa0a8;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    button {
+      font: inherit;
+      font-weight: 800;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: var(--gold);
+      color: #3a2a08;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #c79622;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px); box-shadow: 0 2px 0 #c79622; }
+    button:disabled {
+      opacity: 0.45;
+      cursor: default;
+      transform: none;
+    }
+
+    .count {
+      min-width: 7.5rem;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .hint {
+      margin: 0;
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sheet { transition: none; }
+    }
+
+    @media (max-width: 640px) {
+      .words { padding: 14px 16px 32px; }
+      .words p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerald &amp; Jeffrey</h1>
+
+  <div class="stage">
+    <div class="book" id="book">
+      <article class="sheet">
+        <div class="face cover-face">
+          <img src="art/cover.jpg" alt="Book cover. Gerald the hammerhead and Jeffrey the goldfish swim away from Coral Reef Elementary. Teacher the ocean sunfish stands by the school rules. Jeremiah and Donald, two small clownfish, watch from the sand.">
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art">
+            <img src="art/characters/gerald.jpg" alt="Gerald, a smiling hammerhead shark with a teal backpack.">
+          </div>
+          <div class="words">
+            <p>Gerald was a hammerhead shark, and he was the only shark in his elementary school.</p>
+          </div>
+          <span class="num">2</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art crowd">
+            <img src="art/characters/teacher.jpg" alt="Teacher, an ocean sunfish with round glasses and a blue tie.">
+            <img src="art/characters/jeremiah/poofy.jpg" alt="Jeremiah, a clownfish with a poofy grumpy face and big fins.">
+            <img src="art/characters/donald.jpg" alt="Donald, a bright orange grumpy clownfish.">
+            <img src="art/characters/jeffrey.jpg" alt="Jeffrey, a small smiling goldfish.">
+          </div>
+          <div class="words">
+            <p>The rest of the class were fish. Jeremiah and Donald were clownfish. Jeffrey was a goldfish, the only goldfish in the room. Their teacher was an ocean sunfish. His name was Teacher.</p>
+          </div>
+          <span class="num">3</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art pair">
+            <img src="art/characters/jeremiah/scared.jpg" alt="Jeremiah looking scared.">
+            <img src="art/characters/donald.jpg" alt="Donald looking grumpy.">
+          </div>
+          <div class="words">
+            <p>Everybody else stayed in a bunch, and nobody sat by Gerald.</p>
+            <p>They thought he was going to eat them all.</p>
+          </div>
+          <span class="num">4</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art">
+            <img src="art/characters/gerald.jpg" alt="Gerald waiting, still smiling, with his backpack on.">
+          </div>
+          <div class="words">
+            <p>Gerald did not eat them. He came to school. He sat at his desk. He waited for someone to talk to him. Jeremiah would not. Donald would not. The other fish would not. They kept their eyes on him and kept their distance.</p>
+            <p>It was not fair. He was right there. All they had to do was talk.</p>
+          </div>
+          <span class="num">5</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art">
+            <img src="art/characters/gerald.jpg" alt="Gerald the hammerhead, alone in the water.">
+          </div>
+          <div class="words">
+            <p>When school ended, Gerald swam home. The water felt bigger when nobody was in it with him. He got into bed sad, because no one wanted to be his friend.</p>
+          </div>
+          <span class="num">6</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art pair">
+            <img src="art/characters/jeremiah/side-eye.jpg" alt="Jeremiah looking sideways, unwilling to sit near Gerald.">
+            <img src="art/characters/donald.jpg" alt="Donald staying away.">
+          </div>
+          <div class="words">
+            <p>The next morning he went to school, and it was the same as always. Desks filled up. A gap stayed open on either side of Gerald. No one wanted to sit by him.</p>
+          </div>
+          <span class="num">7</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art">
+            <img src="art/characters/jeffrey.jpg" alt="Jeffrey the goldfish, smiling as he swims closer.">
+          </div>
+          <div class="words">
+            <p>Jeffrey looked at that gap. He knew it. He was the only goldfish in the classroom, and some days that made the room feel like it had no place for him either.</p>
+            <p>Jeffrey swam up to Gerald.</p>
+          </div>
+          <span class="num">8</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art pair">
+            <img src="art/characters/jeffrey.jpg" alt="Jeffrey.">
+            <img src="art/characters/gerald.jpg" alt="Gerald turning both eyes toward Jeffrey.">
+          </div>
+          <div class="words">
+            <p class="said">"Hi," Jeffrey said.</p>
+            <p>Gerald blinked. Hammerheads have wide-set eyes, and both of them turned toward the small goldfish.</p>
+            <p class="said">"Hi," Gerald said.</p>
+            <p class="said">"Do you want to be friends?" Jeffrey asked.</p>
+            <p class="said">"Yes," Gerald said. "Nobody else will."</p>
+          </div>
+          <span class="num">9</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art pair">
+            <img src="art/characters/gerald.jpg" alt="Gerald, very big beside his friend.">
+            <img src="art/characters/jeffrey.jpg" alt="Jeffrey, very small beside Gerald.">
+          </div>
+          <div class="words">
+            <p>They talked. They talked about being friends. Gerald was big. His head stretched out to both sides, and his shadow covered a whole desk. Jeffrey was small. Next to Gerald, Jeffrey looked like a bright coin.</p>
+            <p class="said">"You are really big," Jeffrey said.</p>
+            <p class="said">"You are really small," Gerald said.</p>
+            <p>They both laughed, and the gap beside Gerald was gone, because Jeffrey was in it.</p>
+          </div>
+          <span class="num">10</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art trio">
+            <img src="art/characters/jeremiah/poofy.jpg" alt="Jeremiah with his poofy face, still watching.">
+            <img src="art/characters/donald.jpg" alt="Donald still watching.">
+            <img src="art/characters/jeffrey.jpg" alt="Jeffrey staying beside Gerald anyway.">
+          </div>
+          <div class="words">
+            <p>Jeremiah and Donald still watched. The other fish still thought a shark might eat them. Jeffrey stayed anyway.</p>
+          </div>
+          <span class="num">11</span>
+        </div>
+      </article>
+
+      <article class="sheet">
+        <div class="face">
+          <div class="art pair">
+            <img src="art/characters/gerald.jpg" alt="Gerald swimming into the open ocean.">
+            <img src="art/characters/jeffrey.jpg" alt="Jeffrey swimming beside Gerald.">
+          </div>
+          <div class="words">
+            <p>When the day was over, Gerald and Jeffrey did not go back to their own separate homes and wait for another morning like the last one. They left school behind. They swam out of the elementary school and into the ocean, side by side, one very big and one very small.</p>
+            <p>They kept talking. Out there, nobody had to decide whether to sit by Gerald. Jeffrey already had.</p>
+            <p class="ending">They became the bestest of friends.</p>
+          </div>
+          <span class="num">12</span>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="prev">Previous</button>
+    <div class="count" id="count">Cover</div>
+    <button type="button" id="next">Next page</button>
+  </div>
+  <p class="hint">Click the page, or use the arrow keys.</p>
+
+  <script>
+    const sheets = Array.from(document.querySelectorAll(".sheet"));
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    const count = document.getElementById("count");
+    const book = document.getElementById("book");
+    let page = 0;
+    let turning = -1;
+    let busy = false;
+
+    function paint() {
+      sheets.forEach((sheet, index) => {
+        const flipped = index < page;
+        sheet.classList.toggle("flipped", flipped);
+        if (index === turning) sheet.style.zIndex = 200;
+        else if (flipped) sheet.style.zIndex = index + 1;
+        else sheet.style.zIndex = 100 - index;
+      });
+      prev.disabled = page === 0;
+      next.disabled = page === sheets.length - 1;
+      count.textContent = page === 0 ? "Cover" : "Page " + (page + 1) + " of " + sheets.length;
+    }
+
+    function go(to) {
+      if (busy || to === page || to < 0 || to >= sheets.length) return;
+      busy = true;
+      turning = to > page ? page : to;
+      page = to;
+      paint();
+      window.setTimeout(() => { busy = false; }, 880);
+    }
+
+    prev.addEventListener("click", () => go(page - 1));
+    next.addEventListener("click", () => go(page + 1));
+
+    book.addEventListener("click", (event) => {
+      const bounds = book.getBoundingClientRect();
+      const onRight = event.clientX > bounds.left + bounds.width / 2;
+      go(page + (onRight ? 1 : -1));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " ") {
+        event.preventDefault();
+        go(page + 1);
+      }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        go(page - 1);
+      }
+    });
+
+    paint();
+  </script>
+</body>
+</html>

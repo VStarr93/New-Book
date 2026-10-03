@@ -22,7 +22,7 @@ A short story.
 
 More sparks can be added later. The full version of spark 1 is in [01-ideas.md](01-ideas.md).
 
-1. A classroom of fish is afraid of the one shark, until one fish decides to be his friend.
+1. A classroom of fish is afraid of the one shark, until one fish decides to be his friend. **Chosen.** See [02-from-idea-to-story.md](02-from-idea-to-story.md).
 2.
 3.
 4.

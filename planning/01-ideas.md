@@ -11,10 +11,10 @@ Copy this block for each new idea.
 ### The shark nobody would sit by
 
 - One-sentence spark: A classroom of fish is afraid of the one shark, until one fish decides to be his friend.
-- Who it is about: A shark who wants a friend, and the fish who talks to him.
+- Who it is about: Gerald, a hammerhead shark who wants a friend, and Jeffrey, the only goldfish in the class. Jeremiah and Donald are clownfish in the same class. Their teacher is an ocean sunfish named Teacher.
 - What is interesting or funny or tense about it: Everyone thinks the shark will eat them, so he goes home sad. The next morning no one will sit by him, until one fish swims up and starts to talk. They become friends, swim into the ocean, and become the bestest of friends.
 - Feeling path: irritated, then sad, then happy.
-- Status: spark
+- Status: chosen
 
 ---
 
