@@ -2,6 +2,23 @@
 
 A short, heartfelt animal fantasy for a dad (33) and his son (11), planned and written together. The feeling moves from irritated, to sad, to happy.
 
+## Read it on a phone
+
+After GitHub Pages is enabled, open:
+
+**https://vstarr93.github.io/New-Book/**
+
+That link loads `book.html` and the pictures together in the browser. You do not need a laptop.
+
+Phone tip: downloading the GitHub zip and opening `book.html` from Files often shows missing pictures. Phone browsers block local HTML from loading nearby image files for security. A website link (GitHub Pages) fixes that.
+
+### One-time Pages setup
+
+1. Merge the GitHub Pages pull request (or push these files to `main`).
+2. On GitHub: **Settings → Pages**.
+3. Under **Build and deployment → Source**, choose **GitHub Actions**.
+4. Wait for the “Deploy GitHub Pages” workflow to finish (Actions tab), then use the link above.
+
 ## How this project grows
 
 Work in this order. Stay on a step until it feels solid, then move on. Earlier notes can change later.
