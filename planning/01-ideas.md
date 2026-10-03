@@ -8,12 +8,13 @@ When you are ready to choose, mark one idea (or a combination) as **Chosen** and
 
 Copy this block for each new idea.
 
-### Idea title
+### The shark nobody would sit by
 
-- One-sentence spark:
-- Who it is about:
-- What is interesting or funny or tense about it:
-- Status: spark / maybe / chosen / set aside
+- One-sentence spark: A classroom of fish is afraid of the one shark, until one fish decides to be his friend.
+- Who it is about: A shark who wants a friend, and the fish who talks to him.
+- What is interesting or funny or tense about it: Everyone thinks the shark will eat them, so he goes home sad. The next morning no one will sit by him, until one fish swims up and starts to talk. They become friends, swim into the ocean, and become the bestest of friends.
+- Feeling path: irritated, then sad, then happy.
+- Status: spark
 
 ---
 

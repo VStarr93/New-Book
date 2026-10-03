@@ -4,25 +4,25 @@ Fill this in together before you choose a plot. Short answers are enough. You ca
 
 ## Who is this book for?
 
-Age of the reader, or "just for us":
+Just for us. My son is 11 and I am 33.
 
 ## What should it feel like?
 
-Circle or write one or more: funny, scary, adventurous, mysterious, heartfelt, something else.
+Heartfelt. The feeling moves from irritated, to sad, to happy.
 
 ## What kind of story is it?
 
-Examples: fantasy, real life, science fiction, mystery, animals, historical, a mix.
+A fantasy story with animals.
 
 ## How long should it be?
 
-Examples: a short story, a chapter book of about 10 chapters, a longer novel.
+A short story.
 
 ## A few sparks
 
-Write 3 to 5 "what if" ideas. One sentence each. Do not pick a favorite yet — that happens in [01-ideas.md](01-ideas.md).
+More sparks can be added later. The full version of spark 1 is in [01-ideas.md](01-ideas.md).
 
-1.
+1. A classroom of fish is afraid of the one shark, until one fish decides to be his friend.
 2.
 3.
 4.

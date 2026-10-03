@@ -1,6 +1,6 @@
 # New Book
 
-A book planned and written together, starting from loose ideas and growing into a full story.
+A short, heartfelt animal fantasy for a dad (33) and his son (11), planned and written together. The feeling moves from irritated, to sad, to happy.
 
 ## How this project grows
 
